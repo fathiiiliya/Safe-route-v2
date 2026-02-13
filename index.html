@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Route</title>
+</head>
+<body>
+   {
+    font-family: Arial;
+    background: #f4f4f4;
+    padding: 20px;
+}
+
+input, button {
+    padding: 8px;
+    margin: 5px;
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.green { background: green; }
+.yellow { background: gold; }
+.red { background: red; }
+.black { background: black; }
+
+#result { font-size: 18px; font-weight: bold; }
+</style>
+</head>
+
+<body>
+
+<h2>🚦 SafeRoute - Navigate Beyond Speed</h2>
+<p>Optimized for Safety</p>
+
+<input id="origin" placeholder="Enter Origin">
+<input id="destination" placeholder="Enter Destination">
+<button onclick="findRoute()">Find Safest Route</button>
+
+<p id="result"></p>
+<div id="circle"></div>
+
+<hr>
+
+<h3>⭐ Rate a Place / Route</h3>
+<input id="place" placeholder="Place or Route Name">
+<input id="rating" type="number" min="1" max="5" placeholder="Rating (1-5)">
+<button onclick="saveRating()">Submit Rating</button>
+
+<script>
+
+// Fake database of valid places (simulate real-time)
+const validPlaces = ["Kochi", "Thrissur", "Calicut", "Trivandrum", "Aluva", "Kakkanad"];
+
+// Load ratings from browser memory
+let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
+
+// Save rating
+function saveRating() {
+    let place = document.getElementById("place").value.trim();
+    let rate = parseInt(document.getElementById("rating").value);
+
+    if(place === "" || rate < 1 || rate > 5) {
+        alert("Enter valid place and rating (1-5)");
+        return;
+    }
+
+    ratings[place] = rate;
+    localStorage.setItem("ratings", JSON.stringify(ratings));
+    alert("Rating saved!");
+}
+
+// Main route function
+function findRoute() {
+    let origin = document.getElementById("origin").value.trim();
+    let dest = document.getElementById("destination").value.trim();
+    let result = document.getElementById("result");
+    let circle = document.getElementById("circle");
+
+    // Validation (NO fake place allowed)
+    if(origin === "" || dest === "") {
+        alert("Please enter both Origin and Destination");
+        return;
+    }
+
+    if(!validPlaces.includes(origin) || !validPlaces.includes(dest)) {
+        result.innerHTML = "❌ Place not found in database";
+        circle.innerHTML = "";
+        return;
+    }
+
+    // Base safety score (fixed, not random)
+    let baseScore = 70;
+
+    // Modify score using ratings
+    if(ratings[origin]) baseScore += ratings[origin] * 2;
+    if(ratings[dest]) baseScore += ratings[dest] * 2;
+
+    // Clamp score between 0 and 100
+    baseScore = Math.max(0, Math.min(100, baseScore));
+
+    // Show result with colors
+    let colorClass = "";
+    let message = "";
+
+    if(baseScore > 80) {
+        colorClass = "green";
+        message = "Much Safer Route";
+    } 
+    else if(baseScore >= 60) {
+        colorClass = "yellow";
+        message = "Moderate Safety";
+    } 
+    else if(baseScore >= 40) {
+        colorClass = "red";
+        message = "Alerted Area";
+    } 
+    else {
+        colorClass = "black";
+        message = "❌ Do NOT choose this route";
+    }
+
+    result.innerHTML = `Safety Score: ${baseScore} → ${message}`;
+    circle.innerHTML = `<div class="circle ${colorClass}"></div>`;
+}
+
+</script>
+
+</body>
+</html>
