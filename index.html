@@ -1,134 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Safe Route</title>
-</head>
-<body>
-   {
-    font-family: Arial;
-    background: #f4f4f4;
-    padding: 20px;
+<title>SafeRoute AI</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: linear-gradient(135deg,#74ABE2,#5563DE);
+  padding: 20px;
+  color: white;
 }
 
-input, button {
-    padding: 8px;
-    margin: 5px;
+.container {
+  max-width: 720px;
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
-.circle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: inline-block;
+input {
+  padding: 8px;
+  width: 45%;
+  margin: 5px;
 }
 
-.green { background: green; }
-.yellow { background: gold; }
-.red { background: red; }
-.black { background: black; }
+button {
+  padding: 10px 18px;
+  background: #ff9800;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-#result { font-size: 18px; font-weight: bold; }
+.route {
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.safe { background:#d4edda; color:#155724; }
+.medium { background:#fff3cd; color:#856404; }
+.danger { background:#f8d7da; color:#721c24; }
+.black { background:#343a40; color:white; }
+.best { border: 3px solid black; }
 </style>
 </head>
 
 <body>
 
-<h2>🚦 SafeRoute - Navigate Beyond Speed</h2>
-<p>Optimized for Safety</p>
+<div class="container">
+<h2>🚦 SafeRoute AI - Smart Safety Navigation</h2>
+<p>Enter Origin and Destination to analyze multiple routes</p>
 
-<input id="origin" placeholder="Enter Origin">
-<input id="destination" placeholder="Enter Destination">
-<button onclick="findRoute()">Find Safest Route</button>
+<input id="origin" placeholder="Origin (A)">
+<input id="destination" placeholder="Destination (B)">
+<br><br>
 
-<p id="result"></p>
-<div id="circle"></div>
+<button onclick="findRoutes()">Find Safest Route</button>
 
-<hr>
-
-<h3>⭐ Rate a Place / Route</h3>
-<input id="place" placeholder="Place or Route Name">
-<input id="rating" type="number" min="1" max="5" placeholder="Rating (1-5)">
-<button onclick="saveRating()">Submit Rating</button>
+<div id="output"></div>
+</div>
 
 <script>
 
-// Fake database of valid places (simulate real-time)
-const validPlaces = ["Kochi", "Thrissur", "Calicut", "Trivandrum", "Aluva", "Kakkanad"];
-
-// Load ratings from browser memory
-let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
-
-// Save rating
-function saveRating() {
-    let place = document.getElementById("place").value.trim();
-    let rate = parseInt(document.getElementById("rating").value);
-
-    if(place === "" || rate < 1 || rate > 5) {
-        alert("Enter valid place and rating (1-5)");
-        return;
-    }
-
-    ratings[place] = rate;
-    localStorage.setItem("ratings", JSON.stringify(ratings));
-    alert("Rating saved!");
+// Deterministic Random Generator
+function seededRandom(seed) {
+  let x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
 }
 
-// Main route function
-function findRoute() {
-    let origin = document.getElementById("origin").value.trim();
-    let dest = document.getElementById("destination").value.trim();
-    let result = document.getElementById("result");
-    let circle = document.getElementById("circle");
-
-    // Validation (NO fake place allowed)
-    if(origin === "" || dest === "") {
-        alert("Please enter both Origin and Destination");
-        return;
-    }
-
-    if(!validPlaces.includes(origin) || !validPlaces.includes(dest)) {
-        result.innerHTML = "❌ Place not found in database";
-        circle.innerHTML = "";
-        return;
-    }
-
-    // Base safety score (fixed, not random)
-    let baseScore = 70;
-
-    // Modify score using ratings
-    if(ratings[origin]) baseScore += ratings[origin] * 2;
-    if(ratings[dest]) baseScore += ratings[dest] * 2;
-
-    // Clamp score between 0 and 100
-    baseScore = Math.max(0, Math.min(100, baseScore));
-
-    // Show result with colors
-    let colorClass = "";
-    let message = "";
-
-    if(baseScore > 80) {
-        colorClass = "green";
-        message = "Much Safer Route";
-    } 
-    else if(baseScore >= 60) {
-        colorClass = "yellow";
-        message = "Moderate Safety";
-    } 
-    else if(baseScore >= 40) {
-        colorClass = "red";
-        message = "Alerted Area";
-    } 
-    else {
-        colorClass = "black";
-        message = "❌ Do NOT choose this route";
-    }
-
-    result.innerHTML = `Safety Score: ${baseScore} → ${message}`;
-    circle.innerHTML = `<div class="circle ${colorClass}"></div>`;
+// Hash function for same input = same seed
+function getSeed(str){
+  let hash = 0;
+  for(let i=0;i<str.length;i++){
+    hash = str.charCodeAt(i) + ((hash<<5)-hash);
+  }
+  return hash;
 }
 
+function findRoutes() {
+
+  let origin = document.getElementById("origin").value.trim();
+  let dest = document.getElementById("destination").value.trim();
+
+  if(origin=="" || dest==""){
+    alert("Enter Origin and Destination");
+    return;
+  }
+
+  let seed = getSeed(origin + dest);
+
+  // Dynamic route count (2–8 but FIXED for same input)
+  let routeCount = Math.floor(seededRandom(seed)*7)+2;
+
+  let routes = [];
+
+  for(let i=1;i<=routeCount;i++){
+    let checkpoints = Math.floor(seededRandom(seed+i)*6)+1;
+    let tolls = Math.floor(seededRandom(seed+i*2)*4);
+    let rating = Math.floor(seededRandom(seed+i*3)*6);
+
+    routes.push({
+      name:"Route "+i,
+      checkpoints,
+      tolls,
+      rating
+    });
+  }
+
+  // Safety score formula
+  routes.forEach(r=>{
+    r.score = (r.checkpoints*12) - (r.tolls*6) + (r.rating*8);
+  });
+
+  // Sort descending
+  routes.sort((a,b)=>b.score - a.score);
+
+  let html = `<h3>Routes from <b>${origin}</b> → <b>${dest}</b></h3>`;
+  html += `<p>Total routes found: <b>${routeCount}</b></p>`;
+
+  routes.forEach((r,index)=>{
+    let cls="black";
+    if(r.score>=80) cls="safe";
+    else if(r.score>=60) cls="medium";
+    else if(r.score>=40) cls="danger";
+
+    let best = index==0 ? "best" : "";
+
+    html += `
+      <div class="route ${cls} ${best}">
+      ${r.name}<br>
+      Checkpoints: ${r.checkpoints} | Tolls: ${r.tolls} | User Rating: ${r.rating}/5<br>
+      <b>Safety Score = ${r.score}</b>
+      ${index==0 ? " ⭐ BEST & SAFEST ROUTE" : ""}
+      </div>
+    `;
+  });
+
+  document.getElementById("output").innerHTML = html;
+}
 </script>
 
 </body>
