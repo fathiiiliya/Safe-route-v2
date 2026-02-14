@@ -103,7 +103,6 @@ npm start
 
 5)Access the Application:
 
-Open a web browser and go to http://localhost:3000 (or the specified port) to use SafeRoute.
 
 6)Optional Tools:
 
@@ -138,8 +137,6 @@ npm start
 
 
 3.Open in Browser:
-
-Open a web browser and go to http://localhost:3000 (or the port specified).
 
 Enter the starting point and destination to see the safest routes.
 
