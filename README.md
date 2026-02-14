@@ -38,9 +38,13 @@ SafeRoute provides a safer alternative to traditional navigation apps by analyzi
 ## Features
 Main features of the project:
 1)Safety-Based Route Ranking: Evaluates multiple routes using safety parameters like checkpoints, tolls, road conditions, and user ratings, and ranks them accordingly.
+
 2)Visual Safety Indicators: Highlights the safest route with intuitive color codes for easy identification at a glance.
+
 3)User Feedback Integration: Allows users to contribute ratings or feedback on route safety, improving the system’s recommendations over time.
+
 4)Scalable Design: Built to support future integration with real-time map APIs and additional safety data sources.
+
 5)Secure and Accessible Navigation: Provides a practical tool for travelers, especially women, students, and night commuters, to make informed decisions about their journeys.
 
 ## Implementation
@@ -54,9 +58,58 @@ The safest route and risk zones are visually highlighted on the map.
 Application is deployed using Netlify for public access.
 
 #### Installation
-```bash
-[Installation commands - e.g., npm install, pip install -r requirements.txt]
-```
+Install Required Software:
+
+1)Install Python (for backend processing).
+
+Install Node.js and npm (for frontend development with React).
+
+Install Git (for version control).
+
+2)Clone the Repository:
+
+git clone <your-repo-link>
+cd SafeRoute
+
+3)Backend Setup:
+
+Navigate to the backend folder.
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+
+Run the backend server:
+
+python manage.py runserver   # Django
+# OR
+flask run                    # Flask
+
+
+4)Frontend Setup:
+
+Navigate to the frontend folder.
+
+Install dependencies:
+
+npm install
+
+
+Start the frontend server:
+
+npm start
+
+
+5)Access the Application:
+
+Open a web browser and go to http://localhost:3000 (or the specified port) to use SafeRoute.
+
+6)Optional Tools:
+
+Use Postman to test APIs.
+
+Use Docker for containerized deployment if needed.
 
 #### Run
 ```bash
