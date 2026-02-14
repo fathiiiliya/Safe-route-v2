@@ -4,7 +4,7 @@
 
 # SAFE ROUTE🎯
 
-## SafeRoute is a web application designed to help users find the safest route between two locations.Most navigation apps like Google Maps focus on the fastest route, but they do not consider safety factors such as crime-prone areas, poor lighting, isolated roads, or accident zones.This can be risky, especially for women, students, and night travelers. The system evaluates multiple routes using safety parameters such as checkpoints, tolls, and optional user ratings. Each route is assigned a safety score, and routes are ranked accordingly, with the safest route highlighted using intuitive color indicators. The platform is scalable and can be integrated with real map APIs in the future, providing users with a practical and visually clear tool for safe navigation.
+## SafeRoute is a web application designed to help users find the safest route between two locations.Most navigation apps like Google Maps focus on the fastest route, but they do not consider safety factors such as crime-prone areas, poor lighting, isolated roads, or accident zones.This can be risky, especially for women, students, and night travelers. The system evaluates multiple routes using safety parameters such as checkpoints, tolls, and optional user ratings. Each route is assigned a safety score, and routes are ranked accordingly, with the safest route highlighted using intuitive color indicators. The platform is scalable and can be integrated with real map APIs in the future, providing users with a practical and visually clear tool for safe navigation..
 
 ### team Name:Byte Force
 
