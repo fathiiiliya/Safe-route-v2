@@ -4,25 +4,25 @@
 
 # SAFE ROUTE🎯
 
-## Basic Details
+## SafeRoute is a web application designed to help users find the safest route between two locations.Most navigation apps like Google Maps focus on the fastest route, but they do not consider safety factors such as crime-prone areas, poor lighting, isolated roads, or accident zones.This can be risky, especially for women, students, and night travelers. The system evaluates multiple routes using safety parameters such as checkpoints, tolls, and optional user ratings. Each route is assigned a safety score, and routes are ranked accordingly, with the safest route highlighted using intuitive color indicators. The platform is scalable and can be integrated with real map APIs in the future, providing users with a practical and visually clear tool for safe navigation.
 
-### Team Name: [Name]
+### team Name:Byte Force
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: Fathima Adeeba O P - LBSITW
+- Member 2: Liya Fathima C K- LBSITW
 
 ### Hosted Project Link
-[mention your project hosted link here]
+https://regal-tiramisu-7f5448.netlify.app/
 
 ### Project Description
-[2-3 lines about what your project does]
+SafeRoute is a web app that helps users travel securely by analyzing multiple paths and scoring them based on safety parameters like checkpoints, tolls, and user feedback. The safest route is clearly highlighted, making navigation safer for vulnerable travelers, and the system can be expanded to work with live map services.
 
 ### The Problem statement
-[What problem are you solving?]
+Current navigation systems fail to consider safety factors, leaving users exposed to unsafe routes and potential hazards during travel.
 
 ### The Solution
-[How are you solving it?]
+SafeRoute provides a safer alternative to traditional navigation apps by analyzing multiple routes between two locations. The system evaluates each route using safety parameters such as checkpoints, tolls, road conditions, and optional user ratings. Each route is assigned a safety score based on these factors, and routes are ranked accordingly. The safest route is highlighted with intuitive color indicators, making it easy for users to identify at a glance. This approach empowers travelers—especially women, students, and night commuters—to make informed decisions about their journeys. The platform is scalable and can be integrated with real-time map APIs in the future, providing a practical and reliable solution for safe navigation.
 
 ---
 
@@ -30,32 +30,28 @@
 
 ### Technologies/Components Used
 
-**For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
-
-**For Hardware:**
-- Main components: [List main components]
-- Specifications: [Technical specifications]
-- Tools required: [List tools needed]
-
----
+- Languages used: HTML
+- Frameworks used: React.js
+- Libraries used: Netlify Deployment tools-for hosting and deployment
+- Tools used: VS Code
 
 ## Features
-
-List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
-
----
+Main features of the project:
+1)Safety-Based Route Ranking: Evaluates multiple routes using safety parameters like checkpoints, tolls, road conditions, and user ratings, and ranks them accordingly.
+2)Visual Safety Indicators: Highlights the safest route with intuitive color codes for easy identification at a glance.
+3)User Feedback Integration: Allows users to contribute ratings or feedback on route safety, improving the system’s recommendations over time.
+4)Scalable Design: Built to support future integration with real-time map APIs and additional safety data sources.
+5)Secure and Accessible Navigation: Provides a practical tool for travelers, especially women, students, and night commuters, to make informed decisions about their journeys.
 
 ## Implementation
-
-### For Software:
+User enters source and destination locations.
+Google Maps API generates multiple possible routes.
+Each route is divided into smaller segments for analysis.
+Safety data (crime zones, time-based risk, user reports) is mapped to route segments.
+A safety score is calculated using weighted risk factors.
+The route with the highest safety score is recommended.
+The safest route and risk zones are visually highlighted on the map.
+Application is deployed using Netlify for public access.
 
 #### Installation
 ```bash
@@ -67,17 +63,6 @@ List the key features of your project:
 [Run commands - e.g., npm start, python app.py]
 ```
 
-### For Hardware:
-
-#### Components Required
-[List all components needed with specifications]
-
-#### Circuit Setup
-[Explain how to set up the circuit]
-
----
-
-## Project Documentation
 
 ### For Software:
 
@@ -104,32 +89,6 @@ List the key features of your project:
 ![Workflow](docs/workflow.png)
 *Add caption explaining your workflow*
 
----
-
-### For Hardware:
-
-#### Schematic & Circuit
-
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-#### Build Photos
-
-![Team](Add photo of your team here)
-
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
----
 
 ## Additional Documentation
 
