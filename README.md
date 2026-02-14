@@ -190,21 +190,16 @@ Safety Score = 14
 ## Project Demo
 
 ### Video
-[Add your demo video link here - YouTube, Google Drive, etc.]
 
-*Explain what the video demonstrates - key features, user flow, technical highlights*
-
-
-
-## AI Tools Used (Optional - For Transparency Bonus)
+https://github.com/user-attachments/assets/1d33d001-9b73-4d18-9402-c9098f2c31a7
+Discover our web app in action — explore its key features, seamless usability, and how it helps you to find the safest route while travelling efficiently.
 
 
+## AI Tools Used 
 **Tool Used:**  GitHub, Copilot,perplexity ChatGPT
 
-
 **Human Contributions:**
-- Architecture design and planning
-- Custom business logic implementation
+- design and planning
 - Integration and testing
   
 ## Team Contributions
