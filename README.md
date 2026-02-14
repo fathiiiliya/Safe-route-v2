@@ -206,5 +206,13 @@ Discover our web app in action — explore its key features, seamless usability,
 
 - fathima adeeba: Frontend development,documentation, API integration
 - liya fathima: Backend development,testing, Database design
+- **Common License Options:**
+- MIT License (Permissive, widely used)
+- Apache 2.0 (Permissive with patent grant)
+- GPL v3 (Copyleft, requires derivative works to be open source)
+
+---
+
+Made with ❤️ at TinkerHub
 
 
